@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Sanity Suite" verbose="0" group-by-instances="true">
+    <test name="Sanity" verbose="1" group-by-instances="true">
+        <parameter name="testRailProjectId" value="1"/>
+        <parameter name="testRailRunPrefix" value="Jira.Villi"/>
+        <groups>
+            <run>
+                <exclude name="disabled"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="hillelProject.jira"/>
+        </packages>
+    </test>
+</suite>

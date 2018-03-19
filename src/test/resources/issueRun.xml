@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Sanity Suite" verbose="0" group-by-instances="true">
+    <test name="Sanity" verbose="1" group-by-instances="true" parallel="false">
+        <groups>
+            <run>
+                <exclude name="disabled"/>
+                <include name="Issue.*"/>
+                <include name="TestrailReport"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="hillelProject.jira"/>
+        </packages>
+    </test>
+</suite>
+
+        <!-- mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/sanityRun.xml -->
