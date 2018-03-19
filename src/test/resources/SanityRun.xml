@@ -6,14 +6,14 @@
         <listener class-name="hillelProject.listeners.TestListener"/>
     </listeners>
     <test name="Sanity" verbose="1" group-by-instances="true">
-        <!--<parameter name="testRailProjectId" value="1"/>-->
-        <!--<parameter name="testRailRunPrefix" value="Jira.Villi"/>-->
+        <parameter name="testRailProjectId" value="1"/>
+        <parameter name="testRailRunPrefix" value="Jira.Villi"/>
         <groups>
             <run>
                 <exclude name="disabled"/>
                 <include name="Login"/>
                 <include name="Sanity"/>
-                <!--<include name="TestrailReport"/>-->
+                <include name="TestrailReport"/>
             </run>
         </groups>
         <packages>
