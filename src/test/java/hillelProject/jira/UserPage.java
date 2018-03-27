@@ -85,7 +85,7 @@ public class UserPage {
         WebDriverTools.clearAndFill(cssSelector("#user-filter-userSearchFilter"), JiraVars.userEmail).click();
 
         List<WebElement> newIssueLinks1 = browser.findElements(cssSelector("#user_browser_table > tbody > tr > td:nth-child(2)"));
-        Assert.assertTrue(newIssueLinks1.size() != 0);
+
     }
 
     public static void deleteUser() throws InterruptedException{

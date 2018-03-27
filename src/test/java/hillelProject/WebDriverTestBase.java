@@ -23,7 +23,7 @@ public class WebDriverTestBase {
         System.setProperty("webdriver.chrome.driver", "/Users/villiburduza/IdeaProjects/chromedriver");
     }
 
-    @BeforeTest
+    @BeforeTest(alwaysRun = true)
     public static void setUp() throws MalformedURLException {
         browser = new ChromeDriver(new ChromeOptions().addArguments("--start-maximized", "--incognito"));
         browser.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
@@ -38,32 +38,32 @@ public class WebDriverTestBase {
 
         browser.close();
     }
-    @Parameters ({ "testRailProjectId", "testRailRunPrefix" })
-    @BeforeTest(groups = "TestRailReport")
-    protected void prepareTestRailRun(Integer projectId, String runPrefix) throws Exception {
-        String baseURL = "https://hillelrob.testrail.io/";
-        System.out.println("Reporting to " + baseURL);
-
-        trReport = new TestRail(baseURL);
-        trReport.setCreds("rvalek@intersog.com", "hillel");
-        trReport.startRun(projectId, runPrefix + new SimpleDateFormat("dd/MM/yy HH:mm").format(new Date()));
-    }
-
-    @AfterMethod(groups = "TestRailReport")
-    protected void reportResult(ITestResult testResult) throws Exception {
-        String testDescription = testResult.getMethod().getDescription();
-        try {
-            int caseId = Integer.parseInt(testDescription.substring(0, testDescription.indexOf(".")));
-            trReport.setResult(caseId, testResult.getStatus());
-        } catch (IndexOutOfBoundsException | NumberFormatException e) {
-            System.out.println(testDescription + " - Case ID missing; not reporting to TestRail.");
-        }
-
-    }
-
-    @AfterClass(groups = "TestrailReport")
-    protected void closeTestRailRun() throws Exception {
-        trReport.endRun();
-    }
+//    @Parameters ({ "testRailProjectId", "testRailRunPrefix" })
+//    @BeforeTest(groups = "TestRailReport")
+//    protected void prepareTestRailRun(Integer projectId, String runPrefix) throws Exception {
+//        String baseURL = "https://hillelrob.testrail.io/";
+//        System.out.println("Reporting to " + baseURL);
+//
+//        trReport = new TestRail(baseURL);
+//        trReport.setCreds("rvalek@intersog.com", "hillel");
+//        trReport.startRun(projectId, runPrefix + new SimpleDateFormat("dd/MM/yy HH:mm").format(new Date()));
+//    }
+//
+//    @AfterMethod(groups = "TestRailReport")
+//    protected void reportResult(ITestResult testResult) throws Exception {
+//        String testDescription = testResult.getMethod().getDescription();
+//        try {
+//            int caseId = Integer.parseInt(testDescription.substring(0, testDescription.indexOf(".")));
+//            trReport.setResult(caseId, testResult.getStatus());
+//        } catch (IndexOutOfBoundsException | NumberFormatException e) {
+//            System.out.println(testDescription + " - Case ID missing; not reporting to TestRail.");
+//        }
+//
+//    }
+//
+//    @AfterClass(groups = "TestrailReport")
+//    protected void closeTestRailRun() throws Exception {
+//        trReport.endRun();
+//    }
 
 }

@@ -13,7 +13,7 @@
                 <exclude name="disabled"/>
                 <include name="Login"/>
                 <include name="Sanity"/>
-                <include name="TestrailReport"/>
+                <!--<include name="TestrailReport"/>-->
             </run>
         </groups>
         <packages>
