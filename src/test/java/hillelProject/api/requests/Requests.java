@@ -14,9 +14,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-/**
- * Created by hillel on 18.08.17.
- */
+
 public class Requests {
     private static CloseableHttpClient httpclient = HttpClients.createDefault();
 
